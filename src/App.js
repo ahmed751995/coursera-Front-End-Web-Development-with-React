@@ -1,7 +1,10 @@
 import React from 'react';
-import logo, { ReactComponent } from './logo.svg';
-import './App.css';
+// import logo, { ReactComponent } from './logo.svg'
 import { Navbar, NavbarBrand } from 'reactstrap';
+import {Component} from 'react';
+import Menu from './components/MenuComponent';
+import './App.css';
+
 
 // function App() {
 //   return (
@@ -26,7 +29,9 @@ import { Navbar, NavbarBrand } from 'reactstrap';
 
 // export default App
 
-class App extends React.Component {
+
+
+class App extends Component {
   render() {
     return (
       <div className="App">
@@ -37,9 +42,13 @@ class App extends React.Component {
             </NavbarBrand>
           </div>
         </Navbar>
+	<Menu/>
       </div>
     );
   }
 }
 
-export default App
+
+
+export default App;
+
