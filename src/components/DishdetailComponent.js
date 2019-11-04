@@ -1,13 +1,7 @@
 import React, {Component} from 'react';
-import {Media} from 'reactstrap';
-import { Card, CardImg, CardImgOverlay, CardText, CardBody,
-	 CardTitle } from 'reactstrap';
-import {ListGroupItem, ListGroup} from 'reactstrap';
+import { Card, CardImg, CardText, CardBody, CardTitle } from 'reactstrap';
 
 class DishDetail extends Component {
-    constructor(props) {
-	super(props);
-    }
 
     renderDish(dish) {
 	return(
@@ -35,9 +29,9 @@ class DishDetail extends Component {
 		    // 	-- {comment.author}, {comment.date}
 		    //   </ListGroupItem>
 		    // </ListGroup>
-		    <div>
-		      <p>{comment.comment}</p>
-		      <p>-- {comment.author}, {comment.date}</p>
+		    <div key={comment.id} className="mb-3">
+		      <li>{comment.comment}</li>
+		      <li>-- {comment.author}, {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(comment.date)))}</li>
 		    </div>
 		);
 	    });
@@ -45,7 +39,9 @@ class DishDetail extends Component {
 	    return (
 		<div className="col-12 col-md-5 m-1">
 		  <h4>Comments</h4>
+		  <ul className="list-unstyled">
 		  {commentsList}
+		  </ul>
 		</div>
 	    );
 	} else {
@@ -57,9 +53,11 @@ class DishDetail extends Component {
     render() {
 	if(this.props.dish != null) {
 	    return(
-		<div className="row">
-		  {this.renderDish(this.props.dish)}
-		  {this.renderComments(this.props.dish.comments)}
+		<div className="container">
+		  <div className="row">
+		    {this.renderDish(this.props.dish)}
+		    {this.renderComments(this.props.dish.comments)}
+		  </div>
 		</div>
 	    );
 	    
