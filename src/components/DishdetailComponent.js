@@ -3,7 +3,7 @@ import { Card, CardImg, CardText, CardBody, CardTitle, Breadcrumb, BreadcrumbIte
 	 Button, Modal, ModalHeader, ModalBody, Row, Col, Label} from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { LocalForm, Control, Errors } from 'react-redux-form';
-
+import { Loading } from './LoadingComponent';
 
 
 class CommentForm extends Component {
@@ -25,7 +25,7 @@ class CommentForm extends Component {
 
     handleSubmit(values) {
 	this.toggleModal();
-	console.log()
+	console.log();
 	this.props.addComment(this.props.dishId, values.rating, values.author, values.comment);
     }
     
@@ -135,7 +135,25 @@ function RenderComments({comments, addComment, dishId}) {
 }
 
 const DishDetail = (props) => {
-    if(props.dish != null) {
+    if (props.isLoading) {
+        return(
+            <div className="container">
+              <div className="row">            
+                <Loading />
+              </div>
+            </div>
+        );
+    }
+    else if (props.errMess) {
+        return(
+            <div className="container">
+              <div className="row">            
+                <h4>{props.errMess}</h4>
+              </div>
+            </div>
+        );
+    }
+    else if(props.dish != null) {
 	return(
             <div className="container">
               <div className="row">
@@ -159,7 +177,7 @@ const DishDetail = (props) => {
                 </div>
               </div>
             </div>
-            );
+        );
 	
     } else {
 	return (<div></div>);
