@@ -1,3 +1,6 @@
+# [Front-End Web Development with React coursera course](https://www.coursera.org/learn/front-end-react)
+# exercises and assignments
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 this image shows the react life cycle
