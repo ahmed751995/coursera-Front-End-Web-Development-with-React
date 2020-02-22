@@ -120,8 +120,8 @@ function RenderComments({comments, postComment, dishId}) {
     if(comments != null) {
 	commentsList = comments.map((comment)=> {
 	    return(
-		<Fade in>
-		  <li key={comment.id} className="mb-3">
+		<Fade in key={comment.id}>
+		  <li  className="mb-3">
 		    <p>{comment.comment}</p>
 		    <p>-- {comment.author}, {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(comment.date)))}</p>
 		  </li>
